@@ -6,9 +6,11 @@
 
 ```shell
 git clone https://github.com/Char1esOrz/mongodb-fastapi-docker-compose
-
+```
+```shell
 cd mongodb-fastapi-docker-compose
-
+```
+```shell
 cp .env.example .env
 ```
 Now you can modify the .env file to set the parameters of mongodb and fastapi
