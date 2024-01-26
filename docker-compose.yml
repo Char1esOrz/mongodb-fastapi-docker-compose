@@ -26,3 +26,5 @@ services:
     environment:
       - MONGODB_URL=mongodb://${MONGODB_ROOT_USERNAME:-admin}:${MONGODB_ROOT_PASSWORD:-admin}@${MONGODB_CONTAINER_NAME:-mongodb}:27017/
       - API_KEYS=${API_KEYS:-YOUR_API_KEY}
+    volumes:
+      - ./:/app

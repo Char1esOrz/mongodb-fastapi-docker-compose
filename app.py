@@ -11,7 +11,7 @@ import os
 MONGODB_URL = os.environ["MONGODB_URL"]
 API_KEYS = os.environ["API_KEYS"].split(",")
 app = FastAPI(
-    title="MongoDB API",
+    title="MongoDB API v1",
     summary="By Char1esOrz",
 )
 
