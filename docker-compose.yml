@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  # MongoDB service
+  mongodb:
+    image: mongo:latest
+    container_name: ${MONGODB_CONTAINER_NAME:-mongodb}
+    ports:
+      - "${MONGODB_PORT:-27017}:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_ROOT_USERNAME:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_ROOT_PASSWORD:-admin}
+    volumes:
+      - ${MONGODB_DATA_PATH:-./mongodb_data}:/data/db
+
+  # FastAPI service
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ${FASTAPI_CONTAINER_NAME:-fastapi}
+    ports:
+      - "${FASTAPI_PORT:-8001}:8000"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGODB_URL=mongodb://${MONGODB_ROOT_USERNAME:-admin}:${MONGODB_ROOT_PASSWORD:-admin}@${MONGODB_CONTAINER_NAME:-mongodb}:27017/
+      - API_KEYS=${API_KEYS:-YOUR_API_KEY}
