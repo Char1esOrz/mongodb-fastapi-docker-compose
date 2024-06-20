@@ -19,6 +19,6 @@ vim .env
 ```
 Run
 ```shell
-docker-compose up
+docker compose up
 ```
 Open the server by clicking on the following link: [http://localhost:8000/docs](http://localhost:8000/docs)
